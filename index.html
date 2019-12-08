@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSV2Excel|エクセル0が消えるCSVを解決アプリ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/my_style.css">
+</head>
+<body>
+    <header class="hero is-primary is-bold">
+        <section class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">CSVtoEXCEL</h1>
+                <h2 class="subtitle">頭の0が消えるCSVを0ありのエクセルファイルに変換</h2>
+            </div>
+        </section>
+    </header>
+    <main class="container">
+        <div id="app" v-cloak>
+            <div class="columns">
+                <div
+                    v-bind:class="{'is-dadable':dad_flag, 'is-selected':!dad_flag}"
+                    id="dad-area" 
+                    class="column is-6 is-offset-3"
+                    @dragover.prevent="change_class(true)"
+                    @dragleave.prevent="change_class(false)"
+                    @drop.prevent="upload_func($event)"
+                >
+                    <p class="has-text-centered">ファイルをドラッグアンドドロップ</p>
+                    <p class="has-text-centered">または</p>
+                    <div class="file is-centered is-boxed is-success">
+                        <label for="upload-file" class="file-label">
+                            <input class="file-input" value="ファイルを選択" type="file" name="upload-file" id="upload-file" @change="upload_func" accept="text/csv">
+                            <span class="file-cta">
+                                <i class="fas fa-upload"></i>
+                                <span class="file-label">ファイルを選択</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="notification is-danger" v-show="error_msg">
+                <i class="fas fa-exclamation-triangle"></i> {{ error_msg }}
+            </div>
+        </div>
+
+        <section class="section">
+            <h3 class="has-text-centered has-text-info is-size-3">How To USE</h3>
+            <div class="has-text-centered">
+                <p>CSVファイルをドラッグアンドドロップ、または、ファイル選択よりアップロードしてください。</p>
+                <p>EXCELファイルに変換され、ダウンロードフォルダに格納されます。</p>
+            </div>
+            <h4 class="has-text-centered has-text-info is-size-4">メリット</h3>
+            <div class="columns">
+                <div class="column is-6 is-offset-3">
+                    <ul>
+                        <li><i class="fas fa-star"></i>&nbsp;無料で使用できるWebサービスです</li>
+                        <li><i class="fas fa-star"></i>&nbsp;5MBまでのCSVファイルに対応</li>
+                        <li><i class="fas fa-star"></i>&nbsp;外部サーバではなく、ブラウザの処理</li>
+                        <li><i class="fas fa-arrow-right"></i>&nbsp;流出リスク0で社外秘ファイルも変換可能</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer has-text-centered has-background-dark">
+        <div class="has-text-weight-light has-text-light">
+            <a class="button"><i class="far fa-envelope"></i>&nbsp;お問い合わせ</a>
+            <a class="button"><i class="fab fa-github"></i>&nbsp;Github</a>
+            <p>Copyright</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/encoding-japanese/1.0.30/encoding.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.15.1/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="./js/tinycsv.js"></script>
+    <script src="./js/my_app.js"></script>
+</body>
+</html>
