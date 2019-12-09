@@ -38,8 +38,8 @@ const app = new Vue({
             let vm = this;
             reader.onload = function(event) {
                 let array = new Uint8Array(event.target.result);
-                console.log(Encoding.detect(array));
-                switch (Encoding.detect(array)) {
+                let char_code = Encoding.detect(array);
+                switch (char_code) {
                     case "UTF16":
                         array = new Uint16Array(e.target.result);
                         break;
@@ -47,8 +47,13 @@ const app = new Vue({
                         array = new Uint32Array(e.target.result);
                         break;
                 }
-                let unicodeArray = Encoding.convert(array, "UNICODE");
-                console.log(Encoding.detect(unicodeArray));
+                if (char_code === "UNICODE") {
+                    char_code = "SJIS";
+                }
+                let unicodeArray = Encoding.convert(array, {
+                    to: "UNICODE",
+                    from: char_code,
+                });
                 let text = Encoding.codeToString(unicodeArray);
                 vm.csv_arr = TinyCSV.parse(text);
                 callback();
