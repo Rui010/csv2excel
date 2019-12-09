@@ -48,6 +48,7 @@ const app = new Vue({
                         break;
                 }
                 let unicodeArray = Encoding.convert(array, "UNICODE");
+                console.log(Encoding.detect(unicodeArray));
                 let text = Encoding.codeToString(unicodeArray);
                 vm.csv_arr = TinyCSV.parse(text);
                 callback();
