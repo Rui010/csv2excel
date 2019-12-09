@@ -8,7 +8,8 @@ const app = new Vue({
         csv_arr: [],
         file_name: "",
         error_msg: "",
-        dad_flag: true
+        dad_flag: true,
+        char_code_flag: "auto",
     },
     computed: {},
     methods: {
@@ -47,8 +48,10 @@ const app = new Vue({
                         array = new Uint32Array(e.target.result);
                         break;
                 }
-                if (char_code === "UNICODE") {
+                if (char_code_flag === "SJIS") {
                     char_code = "SJIS";
+                } else if (char_code_flag === "UTF8") {
+                    char_code = "UTF8";
                 }
                 let unicodeArray = Encoding.convert(array, {
                     to: "UNICODE",

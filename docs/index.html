@@ -42,8 +42,23 @@
                     </div>
                 </div>
             </div>
+            <div class="has-text-centered control">
+                <span>CSVファイルの文字コード：</span>
+                <label for="auto" class="radio">
+                    <input type="radio" id="auto" value="auto" v-model="char_code_flag" checked="checked">
+                    自動選択
+                </label>
+                <label for="sjis" class="radio">
+                    <input type="radio" id="sjis" value="SJIS" v-model="char_code_flag">
+                    Shift-JIS
+                </label>
+                <label for="utf8" class="radio">
+                    <input type="radio" id="utf8" value="UTF8" v-model="char_code_flag">
+                    UTF-8
+                </label>
+            </div>
             <div class="notification is-danger" v-show="error_msg">
-                <i class="fas fa-exclamation-triangle"></i> {{ error_msg }}
+                <i class="fas fa-exclamation-triangle"></i>&nbsp;{{ error_msg }}
             </div>
         </div>
 
@@ -53,15 +68,24 @@
                 <p>CSVファイルをドラッグアンドドロップ、または、ファイル選択よりアップロードしてください。</p>
                 <p>EXCELファイルに変換され、ダウンロードフォルダに格納されます。</p>
             </div>
-            <h4 class="has-text-centered has-text-info is-size-4">メリット</h3>
-            <div class="columns">
-                <div class="column is-6 is-offset-3">
-                    <ul>
-                        <li><i class="fas fa-star"></i>&nbsp;無料で使用できるWebサービスです</li>
-                        <li><i class="fas fa-star"></i>&nbsp;5MBまでのCSVファイルに対応</li>
-                        <li><i class="fas fa-star"></i>&nbsp;外部サーバではなく、ブラウザの処理</li>
-                        <li><i class="fas fa-arrow-right"></i>&nbsp;流出リスク0で社外秘ファイルも変換可能</li>
-                    </ul>
+            <div class="has-text-centered section">   
+                <p class="has-text-weight-bold has-text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>&nbsp;ダウンロードしたEXCELファイルが文字化けしているとき
+                </p>
+                <p>【CSVファイルの文字コード】の自動選択をShift-JIS、またはUTF-8にして、再度ファイルを変換してください</p>
+                <p class="has-text-grey"><i class="fas fa-asterisk"></i>&nbsp;CSVファイルによって、文字コードの判定が失敗します。</p>
+            </div>
+            <div class="section">
+                <h4 class="has-text-centered has-text-info is-size-4">メリット</h3>
+                <div class="columns">
+                    <div class="column is-6 is-offset-3">
+                        <ul>
+                            <li><i class="fas fa-star"></i>&nbsp;無料で使用できるWebサービスです</li>
+                            <li><i class="fas fa-star"></i>&nbsp;5MBまでのCSVファイルに対応</li>
+                            <li><i class="fas fa-star"></i>&nbsp;外部サーバではなく、ブラウザの処理</li>
+                            <li><i class="fas fa-arrow-right"></i>&nbsp;流出リスク0で社外秘ファイルも変換可能</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
