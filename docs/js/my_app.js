@@ -38,6 +38,7 @@ const app = new Vue({
             let vm = this;
             reader.onload = function(event) {
                 let array = new Uint8Array(event.target.result);
+                console.log(Encoding.detect(array));
                 switch (Encoding.detect(array)) {
                     case "UTF16":
                         array = new Uint16Array(e.target.result);
