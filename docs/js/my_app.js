@@ -48,9 +48,9 @@ const app = new Vue({
                         array = new Uint32Array(e.target.result);
                         break;
                 }
-                if (char_code_flag === "SJIS") {
+                if (vm.char_code_flag === "SJIS") {
                     char_code = "SJIS";
-                } else if (char_code_flag === "UTF8") {
+                } else if (vm.char_code_flag === "UTF8") {
                     char_code = "UTF8";
                 }
                 let unicodeArray = Encoding.convert(array, {
