@@ -8,7 +8,7 @@ const app = new Vue({
         csv_arr: [],
         file_name: "",
         error_msg: "",
-        dad_flag: true,
+        dad_flag: false,
         char_code_flag: "auto",
     },
     computed: {},
