@@ -30,10 +30,12 @@ const app = new Vue({
             this.file_size = file.size;
             if (this.file_size > ErrorCheck.size) {
                 this.error_msg = "Error：ファイルのサイズは10MB以下にしてください！";
+                this.hideSpinner();
                 return;
             }
             if (ErrorCheck.type.indexOf(extension) === -1) {
                 this.error_msg = "Error：CSVファイル以外は変換できません！";
+                this.hideSpinner();
                 return;
             }
             let reader = new FileReader();
