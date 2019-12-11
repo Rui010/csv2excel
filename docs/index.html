@@ -30,7 +30,7 @@
         <div id="app" v-cloak>
             <div class="columns">
                 <div
-                    v-bind:class="{'is-dadable':dad_flag, 'is-selected':!dad_flag}"
+                    v-bind:class="{'is-dadable':!dad_flag, 'is-selected':dad_flag}"
                     id="dad-area" 
                     class="column is-6 is-offset-3"
                     @dragover.prevent="change_class(true)"

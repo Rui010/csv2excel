@@ -8,10 +8,11 @@
     padding: 30px;    
 }
 .is-dadable {
-    border:3px dotted gray;
+    border:3px dotted rgba(0,200,0,0.7);
 }
 .is-selected {
-    border:3px dotted rgba(0,200,0,0.7);
+    border:3px dotted gray;
+    background-clip: #ccc;
 }
 #dad-area p {
     padding: 5px 0;
