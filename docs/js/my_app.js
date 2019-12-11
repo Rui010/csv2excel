@@ -72,6 +72,10 @@ const app = new Vue({
                 this.error_msg = "Error：予期せぬエラーが発生しました！";
                 return;
             }
+            reader.onloadend = function(event) {
+                this.hideSpinner();
+                return;
+            }
             reader.readAsArrayBuffer(file);
         },
         sanitize_name: function(str) {
@@ -94,7 +98,6 @@ const app = new Vue({
             workbook.Sheets["Sheet1"] = XLSX.utils.aoa_to_sheet(csv_arr, wopts);
             let wbout = XLSX.write(workbook, wopts);
             saveAs(new Blob([this.s2ab(wbout)], {type: "application/octet-stream"}), this.file_name + ".xlsx");
-            this.hideSpinner();
         },
         s2ab: function(s) {
             let buf = new ArrayBuffer(s.length);
