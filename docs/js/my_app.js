@@ -1,6 +1,6 @@
 const ErrorCheck = {
-    "size": 5 * 1024 * 1024, // 5MB 以下
-    "type": []
+    "size": 10 * 1024 * 1024, // 10MB 以下
+    "type": ["csv"]
 }
 const app = new Vue({
     el: "#app",
@@ -18,6 +18,7 @@ const app = new Vue({
         },
         upload_func: function(e) {
             this.error_msg = "";
+            this.showSpinner();
             this.readcsv(e, this.makeArray2ExcelFile);
         },
         readcsv: function(e, callback) {
@@ -28,10 +29,10 @@ const app = new Vue({
             this.file_name = this.getFullDate(now) + "_" + this.sanitize_name(_f.join("."));
             this.file_size = file.size;
             if (this.file_size > ErrorCheck.size) {
-                this.error_msg = "Error：ファイルのサイズは5MB以下にしてください！";
+                this.error_msg = "Error：ファイルのサイズは10MB以下にしてください！";
                 return;
             }
-            if (extension !== "csv") {
+            if (ErrorCheck.type.indexOf(extension) === -1) {
                 this.error_msg = "Error：CSVファイル以外は変換できません！";
                 return;
             }
@@ -84,7 +85,6 @@ const app = new Vue({
                 bookSST: false,
                 type: "binary",
             };
-            this.showSpinner();
             let csv_arr = this.csv_arr;
             let file_name = this.file_name;
             let workbook = {SheetNames: [], Sheets: {}};
