@@ -75,6 +75,7 @@ const app = new Vue({
                 return;
             }
             reader.onloadend = function(event) {
+                vm.dad_flag = false;
                 vm.hideSpinner();
                 return;
             }
