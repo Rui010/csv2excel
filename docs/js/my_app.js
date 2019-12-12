@@ -65,15 +65,15 @@ const app = new Vue({
                 callback();
             }
             reader.onabort = function(event) {
-                this.error_msg = "Error：読み込みが中断されました！";
+                vm.error_msg = "Error：読み込みが中断されました！";
                 return;
             }
             reader.onerror = function(event) {
-                this.error_msg = "Error：予期せぬエラーが発生しました！";
+                vm.error_msg = "Error：予期せぬエラーが発生しました！";
                 return;
             }
             reader.onloadend = function(event) {
-                this.hideSpinner();
+                vm.hideSpinner();
                 return;
             }
             reader.readAsArrayBuffer(file);
