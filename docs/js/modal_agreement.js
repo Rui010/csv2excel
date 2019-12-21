@@ -21,6 +21,13 @@
                     Google Analyticsにより収集, 記録, 分析された情報には, 特定の個人を識別する情報は一切含まれません.
                     また, それらの情報は, Google社のプライバシーポリシーに基づいて管理されます. 
                 </div>
+                <hr>
+                <h4 class="is-size-4 has-text-centered">推奨環境</h4>
+                <div>
+                    <p>Chrome, Firefox最新版</p>
+                    <p>macOS Catalina, Google Chrome最新版にて動作検証を行っています. </p>
+                </div>
+                <hr>
             </section>
         </div>
     </div>
