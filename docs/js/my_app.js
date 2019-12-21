@@ -28,6 +28,12 @@ const app = new Vue({
             let extension = _f.pop().toLowerCase();
             this.file_name = this.getFullDate(now) + "_" + this.sanitize_name(_f.join("."));
             this.file_size = file.size;
+            if(!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+                this.error_msg = "Error：対応ブラウザではありません！";
+                this.dad_flag = false;
+                this.hideSpinner();
+                return;
+            }
             if (this.file_size > ErrorCheck.size) {
                 this.error_msg = "Error：ファイルのサイズは10MB以下にしてください！";
                 this.dad_flag = false;
